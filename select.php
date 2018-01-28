@@ -26,7 +26,7 @@ if($status==false){
    // var_dump($result);
     $view .= '<p>';
     $view .= '<a href="detail.php?id='.$result["id"].'">';
-    $view .= $result["indate"].":".$result["name"];
+    $view .= $result["name"].":".$result["email"].":".$result["naiyou"].":".$result["indate"];
     $view .= '</a>';
     $view .= ' ';
 
@@ -49,7 +49,7 @@ if($status==false){
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>フリーアンケート表示</title>
+<title>イメージしてみよう！</title>
 <link rel="stylesheet" href="css/range.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <style>div{padding: 10px;font-size:16px;}</style>
@@ -60,7 +60,7 @@ if($status==false){
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-      <a class="navbar-brand" href="index.php">データ登録</a>
+      <a class="navbar-brand" href="index.php">イメージ一覧へ</a>
     </div>
   </nav>
 </header>
