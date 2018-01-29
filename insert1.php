@@ -1,6 +1,9 @@
+<!--登録するプログラム-->
+
 <?php
 include("functions1.php");
-//入力チェック(受信確認処理追加)
+
+//1.入力チェック
 if(
   !isset($_POST["name"]) || $_POST["name"]=="" ||
   !isset($_POST["lid"]) || $_POST["lid"]=="" ||
@@ -9,41 +12,27 @@ if(
   exit('ParamError');
 }
 
-//1. POSTデータ取得
+//2.POSTデータ受信
 $name   = $_POST["name"];
 $lid  = $_POST["lid"];
 $lpw = $_POST["lpw"];
 
-//2. DB接続します(エラー処理追加)
+//3.DB接続
 $pdo = db_con();
 
-
-/*try {
-  $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','');
-} catch (PDOException $e) {
-  exit('DbConnectError:'.$e->getMessage());
-}*/
-
-
-//３．データ登録SQL作成
+//4.データ登録(SQL作成)
 $stmt = $pdo->prepare("INSERT INTO gs_user_table(id, name, lid, lpw)VALUES(NULL, :a1, :a2, :a3)");
 $stmt->bindValue(':a1', $name);
 $stmt->bindValue(':a2', $lid);
 $stmt->bindValue(':a3', $lpw);
 $status = $stmt->execute();
 
-//４．データ登録処理後
+//5.エラー確認
 if($status==false){
-  //SQL実行時にエラーがある場合（エラーオブジェクト取得して表示）
-
-/*  $error = $stmt->errorInfo();
-  exit("QueryError:".$error[2]);*/
   error_db_info($stmt);
-  
-
 }else{
-  //５．index.phpへリダイレクト
-  header("Location: select.php");
+//リダイレクト
+  header("Location: index.php");
   exit;
 }
 ?>

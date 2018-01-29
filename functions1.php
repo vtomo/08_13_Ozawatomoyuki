@@ -1,7 +1,9 @@
-<?php
-//共通で使うものを別ファイルにしておきましょう。
+<!--関数
+(共通で使うものを関数化してこのファイルに入れておく)-->
 
-//DB接続関数（PDO）
+<?php
+
+//1.DB接続関数（PDO）
 function db_con(){
     try {
         $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','');
@@ -11,15 +13,13 @@ function db_con(){
     }
 }
 
-    
-
-//SQL処理エラー関数
+//2.SQL処理エラー関数
 function error_db_Info($stmt){
     $error = $stmt->errorInfo();
     exit("ErrorQuery:".$error[2]);
 }
 
-//XSS:htmlspecialchars
+//3.XSS:htmlspecialchars
 function h($str){
     return htmlspecialchars($str, ENT_QuOTES);
 }

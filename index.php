@@ -1,14 +1,19 @@
+<!-- [画面] 入力 -->
+
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
-  <title>POSTデータ登録</title>
+  <title>データ登録</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <style>div{padding: 10px;font-size:16px;}</style>
 </head>
+
 <body>
 
-<!-- Head[Start] -->
+<!--USER登録フォーム-->
+<!--
 <header>
     <form method="post" action="insert1.php">
       <div class="jumbotron">
@@ -21,15 +26,10 @@
         </fieldset>
       </div>
     </form>
-
-
-
-
-
 </header>
-<!-- Head[End] -->
+-->
 
-<!-- Main[Start] -->
+<!--データ登録フォーム-->
 <form method="post" action="insert.php">
   <div class="jumbotron">
    <fieldset>
@@ -49,12 +49,12 @@
     </fieldset>
   </div>
 </form>
-<!-- Main[End] -->
-　 <nav class="navbar navbar-default">
+
+<!-- FOOTER-->
+　 <footer class="navbar navbar-default">
     <div class="container-fluid">
     <div class="navbar-header"><a class="navbar-brand" href="select.php">データ一覧へ</a></div>
-  </nav>
-
-
+  </footer>
+  
 </body>
 </html>

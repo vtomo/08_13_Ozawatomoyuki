@@ -1,7 +1,9 @@
+<!--更新プログラム-->
+
 <?php
 include("functions.php");
 
-//入力チェック(受信確認処理追加) id追加
+//1.入力チェック
 if(
   !isset($_POST["id"]) || $_POST["id"]=="" ||
   !isset($_POST["name"]) || $_POST["name"]=="" ||
@@ -11,21 +13,20 @@ if(
   exit('ParamError');
 }
 
-//1. POSTデータ取得 id追加
+//2.POSTデータ取得
 $id = $_POST["id"];
 $name   = $_POST["name"];
 $email  = $_POST["email"];
 $naiyou = $_POST["naiyou"];
 
-//2. DB接続します(エラー処理追加)
+//3.DB接続
 try {
   $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','');
 } catch (PDOException $e) {
   exit('DbConnectError:'.$e->getMessage());
 }
 
-
-//３．データ登録SQL作成
+//4.データ登録(SQL作成)
 $stmt = $pdo->prepare("UPDATE gs_an_table SET name=:name, email=:email, naiyou=:naiyou WHERE id=:id
 ");
 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
@@ -34,17 +35,11 @@ $stmt->bindValue(':email', $email, PDO::PARAM_STR);
 $stmt->bindValue(':naiyou', $naiyou, PDO::PARAM_STR);
 $status = $stmt->execute();
 
-//４．データ登録処理後
+//5.エラー確認
 if($status==false){
-  //SQL実行時にエラーがある場合（エラーオブジェクト取得して表示）
-  /*$error = $stmt->errorInfo();
-  exit("QueryError:".$error[2]);*/
   error_db_info($stmt);
-  
-
-
 }else{
-  //５．select.phpへリダイレクト Location:のあとは必ずスペース
+  //リダイレクト
   header("Location: select.php");
   exit;
 }
