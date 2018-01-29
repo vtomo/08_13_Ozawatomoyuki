@@ -23,15 +23,52 @@ class ImageUploader {
           //create thumbnail
           $this->_createThumbnail($savePath);
 
+          $_SESSION['success'] = 'Upload Done!';
         }catch (\Exception $e){
-            echo $e->getMessage();
-            exit;
+          $_SESSION['error'] = $e->getMessage();
+            //exit;
         }
         //redirect
-        header('Location:http://' . $_SERVER['HTTP_HOST']);
-        exit;
+        
+        header("Location: index2.php");
+        exit();
+    
     }
 
+
+public function getResults(){
+    $success = null;
+    $error = null;
+    if(isset($_SESSION['success'])){
+        $success = $_SESSION['success'];
+        unset($_SESSION['success']);
+    }
+    if(isset($_SESSION['error'])){
+        $error = $_SESSION['error'];
+        unset($_SESSION['error']);
+    }
+    return[$success,$error];
+
+}
+
+public function getImages(){
+    $images = [];
+    $files = [];
+    $imageDir = opendir(IMAGES_DIR);
+    while(false!==($file=readdir($imageDir))){
+        if($file === '.'|| $file ==='..'){
+            continue;
+        }
+        $files[] = $file;
+        if(file_exists(THUMBNAIL_DIR . '/' . $file)){
+            $images[] = basename(THUMBNAIL_DIR) . '/' . $file;
+        }else{
+            $images[] = basename(IMAGES_DIR) .'/'.$file;
+        }
+     }
+     array_multisort($files,SORT_DESC,$images);
+     return $images;
+}
 private function _createThumbnail($savePath){
     $imageSize = getimagesize($savePath);
     $width = $imageSize[0];
@@ -72,9 +109,10 @@ switch($this->_imageType){
 }
 }
 
+
 private function _save($ext){
     $this->_imageFileName = sprintf(
-        '%s_%s.$s' ,
+        '%s_%s.%s' ,
         time(),
         sha1(uniqid(mt_rand(),true)),
         $ext
