@@ -1,6 +1,6 @@
 OzaTomo
 ==========
-A bookmark DB for your favorite books in PHP. 
+Idea and images DB for your ideal life in PHP. 
 
 
 Table of Contents
@@ -24,17 +24,17 @@ Usage
 
 Clone software:
 ```sh
-$ git clone https://github.com/vtomo/07_13_ozawa_tomoyuki.git
+$ git clone https://github.com/vtomo/0８_13_ozawa_tomoyuki.git
 ```
 
-Open file [entry.php] and enter data.
 
-Open file [index.php] and you can see the data you registered about your favorite books.
-
+Open file [index1.php] and you can register yourself and login.<br>
+Open file [select.php] and you can see what you want to be.<br>
+Open file [index2.php] and you can register your favorite image and see how you want be.
 
 
 License
 ------------
 
 OzaTomo is licensed under the [MIT](#) license.  
-Copyright &copy; 2017, Tomoyuki Ozawa
+Copyright &copy; 2018, Tomoyuki Ozawa
