@@ -69,6 +69,8 @@ public function getImages(){
      array_multisort($files,SORT_DESC,$images);
      return $images;
 }
+
+
 private function _createThumbnail($savePath){
     $imageSize = getimagesize($savePath);
     $width = $imageSize[0];

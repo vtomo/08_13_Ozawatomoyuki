@@ -32,16 +32,19 @@ $images = $uploader->getImages();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Image Uploader</title>
+
     <style>
     body{
         text-align: center;
         font-family: Arial, sans-serif;
     }
+    
     ul{
         list-style:none;
         margin:0;
@@ -50,6 +53,7 @@ $images = $uploader->getImages();
     li{
         margin-bottom:5px;
     }
+
     input[type=file] {
     position: absolute;
     top: 0;
@@ -85,7 +89,9 @@ $images = $uploader->getImages();
     color: #f44336;
   }
     </style>
+
 </head>
+
 <body>
 <div class="btn">
  Upload!
@@ -102,6 +108,7 @@ $images = $uploader->getImages();
         <div class="msg error"><?php echo h($error);?></div>
     <?php endif;?>
     
+
     <ul>
         <?php foreach($images as $image):?>
             <li>
@@ -113,6 +120,7 @@ $images = $uploader->getImages();
             
         <?php endforeach;?>
     </ul>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
 $(function() {

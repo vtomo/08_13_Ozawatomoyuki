@@ -28,6 +28,30 @@ if($status==false){
     $view .= '</p>';
   }
 }
+
+// imageUploader 追加 ここから
+/*public function getImages(){
+  $images = [];
+  $files = [];
+  $imageDir = opendir(IMAGES_DIR);
+  while(false!==($file=readdir($imageDir))){
+      if($file === '.'|| $file ==='..'){
+          continue;
+      }
+      $files[] = $file;
+      if(file_exists(THUMBNAIL_DIR . '/' . $file)){
+          $images[] = basename(THUMBNAIL_DIR) . '/' . $file;
+      }else{
+          $images[] = basename(IMAGES_DIR) .'/'.$file;
+      }
+   }
+   array_multisort($files,SORT_DESC,$images);
+   return $images;
+}*/
+// imageUploader 追加 ここまで
+
+
+
 ?>
 
 <!-- [画面]データ一覧 -->
@@ -40,13 +64,49 @@ if($status==false){
   <title>データ一覧</title>
   <link rel="stylesheet" href="css/range.css">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <style>div{padding: 10px;font-size:16px;}</style>
+  <style>div{padding: 10px;font-size:16px;}
+  
+  /*-- index2追加 ここから --*/
+  /*
+  ul{
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
+    li{
+        margin-bottom:5px;
+    }
+  */
+  /*-- index2追加 ここまで --*/
+  
+  
+  </style>
 </head>
 
 <body id="main">
 
     <div>
     　  <legend>データ一覧</legend>
+
+    <!-- index2追加 ここから -->
+<!--
+    <ul>
+        <?php //foreach($images as $image):?>
+            <li>
+                <a href="<?php //echo h(basename(IMAGES_DIR)) . '/' . h(basename($image)); ?>">
+                    <img src="<?php //echo h($image);?>">
+                </a>
+            </li>
+
+            
+        <?php //endforeach;?>
+    </ul>
+-->
+
+    <!-- index2追加 ここまで -->
+
+
+
         <div class="container jumbotron"><?=$view?></div>
     </div>
 
