@@ -32,6 +32,9 @@
     <div class="navbar-header"><a class="navbar-brand" href="select1.php">USER一覧へ</a></div>
   </footer>
 -->
-
+<?php
+header("Location: index.php");
+  exit;
+?>
 </body>
 </html>

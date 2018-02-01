@@ -32,7 +32,7 @@ if($status==false){
   error_db_info($stmt);
 }else{
 //リダイレクト
-  header("Location: index.php");
+  header("Location: index1.php");
   exit;
 }
 ?>

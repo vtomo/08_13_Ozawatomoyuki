@@ -115,6 +115,7 @@ if($status==false){
      <div class="container-fluid">
        <div class="navbar-header">
          <a class="navbar-brand" href="index.php">データ登録へ</a>
+         <a class="navbar-brand" href="index2.php">イメージ登録へ</a>
        </div>
      </div>
   </footer>
