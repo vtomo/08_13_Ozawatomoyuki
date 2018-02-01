@@ -28,8 +28,8 @@ $ git clone https://github.com/vtomo/0８_13_ozawa_tomoyuki.git
 ```
 
 
-Open file [index1.php] and you can register yourself and login.
-Open file [select.php] and you can see what you want to be.
+Open file [index1.php] and you can register yourself and login.<br>
+Open file [select.php] and you can see what you want to be.<br>
 Open file [index2.php] and you can register your favorite image and see how you want be.
 
 
